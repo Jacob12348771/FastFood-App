@@ -5,7 +5,7 @@ import { images } from '@/constants';
 const CartButton = () => {
     const totalItems = 10;
   return (
-    <TouchableOpacity className="cart-btn px-4 py-4" onPress={() => {}}>
+    <TouchableOpacity className="cart-btn px-1 py-4 pl-.5" onPress={() => {}}>
         <Image source={images.bag} className="size-5 " resizeMode="contain" />
 
         {totalItems > 0 && (
