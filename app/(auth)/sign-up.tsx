@@ -9,7 +9,7 @@ const signup = () => {
     const [form, setForm] = useState({ name: '', email: '', password: '' });
 
     const submit = async() => {
-        if(!form.name || !form.email || !form.password) Alert.alert("Error", "Please enter a valid name, email and password");
+        if(!form.name || !form.email || !form.password) return Alert.alert("Error", "Please enter a valid name, email and password");
 
         setIsSubmitting(true)
 
@@ -17,7 +17,7 @@ const signup = () => {
 
             // Call Appwrite Sign up API Function
 
-            Alert.alert("Success", "You have successfully signed in!");
+            Alert.alert("Success", "You have successfully Registered!");
             router.replace('/');
         } catch (error: any) {
             Alert.alert("Error", error.message || "Something went wrong, please try again.");

@@ -9,7 +9,7 @@ const signin = () => {
     const [form, setForm] = useState({ email: '', password: '' });
 
     const submit = async() => {
-        if(!form.email || !form.password) Alert.alert("Error", "Please enter a vaid email and password");
+        if(!form.email || !form.password) return Alert.alert("Error", "Please enter a vaid email and password");
 
         setIsSubmitting(true)
 
@@ -33,7 +33,7 @@ const signin = () => {
             placeholder= "Enter E-mail"
             value={form.email}
             onChangeText={(text) => setForm((prev) => ({ ...prev, email: text }))}
-            label="E-mail"
+            label="Email"
             keyboardType="email-address"
         />  
         <CustomInput
