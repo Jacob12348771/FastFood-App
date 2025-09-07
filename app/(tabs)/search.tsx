@@ -7,7 +7,7 @@ import {useEffect} from "react";
 import CartButton from "@/components/CartButton";
 import cn from "clsx";
 import MenuCard from "@/components/MenuCard";
-import {MenuItem} from "@/type";
+import  {MenuItem } from "@/type";
 
 
 const search = () => {
@@ -17,13 +17,26 @@ const search = () => {
   const { data, refetch, loading } = useAppwrite({ fn: getMenu,  params: { category, query, limit: 6 } });
   const { data: categories } = useAppwrite({ fn: getCategories });
 
+  // Map data fields we need and check types.
+  const menuItems: MenuItem[] = data?.map(doc => ({
+    ...doc,
+    name: doc.name || '',
+    price: doc.price || 1,
+    image_url: doc.image_url || '',
+    description: doc.description || '',
+    calories: doc.calories || 1,
+    protein: doc.protein || 1,
+    rating: doc.rating || 1,
+    type: doc.type || '',
+  })) ?? [];
+
   useEffect(() => {
     refetch({ category, query, limit: 6 });
   }, [category, query]);
 
   return (
     <SafeAreaView className="bg-white h-full">
-      <FlatList data={data} 
+      <FlatList data={menuItems} 
         renderItem={({ item, index }) => {
         const isFirstRightColItem = index % 2 === 0; 
         
